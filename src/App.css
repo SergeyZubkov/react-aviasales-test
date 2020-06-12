@@ -1,10 +1,43 @@
 .app {
-  width: 920px;
+  width: 960px;
   margin: 0 auto;
+  display: flex;
+  position: relative;
+  padding: 160px 0;
 }
 
 .box {
   background: #fff;
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
+}
+
+.sidebar {
+  width: 252px;
+  margin-right: 20px;
+}
+
+.sorting-pannel {
+  display: flex;
+}
+
+.sorting-pannel__btn {
+  font-size: 12px;
+  line-height: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  color: #4A4A4A;
+  text-transform: uppercase;
+  flex-grow: 1;
+  padding: 15px 0;
+}
+
+.sorting-pannel__btn:hover {
+    cursor: pointer;
+}
+
+
+.sorting-pannel__btn.active {
+  background: #2196F3;
+  color: #fff;
 }
