@@ -16,9 +16,14 @@
   color: #2196F3;
 }
 
-.ticket-item__company-logo {
+.ticket-item__carrier {
   width: 50%;
   margin-bottom: 20px;
+  text-align: right;
+}
+
+.ticket-item__carrier-logo {
+  padding-right: 50px;
 }
 
 .ticket-item__info-block {
@@ -28,6 +33,7 @@
 
 .info-block__label {
   font-size: 12px;
+  text-transform: uppercase;
   color: #A0B0B9;
   font-weight: 600;
 }

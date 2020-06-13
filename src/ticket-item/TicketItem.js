@@ -8,22 +8,40 @@ function TicketItem({data}) {
 		segments: [thither, back]
 	} = data;
 
-	const minutesToHours = (min) => Math.round(min / 60)
+	const declension = (number, txt, cases = [2, 0, 1, 1, 1, 2]) => txt[(number % 100 > 4 && number % 100 < 20) ? 2 : cases[(number % 10 < 5) ? number % 10 : 5]];
+
+	const getFormattedStringStops = (stopsNum) => stopsNum + ' ' + declension(stopsNum, ["пересадка", "пересадки", "пересадок"])
+
+	const getTimeInterval = (date, duration) => `${getHoursMins(date)} - ${getHoursMins(new Date(new Date(date).getTime() + duration * 60 * 100))}`
+
+	const getHoursMins = date => new Date(date).toLocaleTimeString().slice(0, 5)
+
+	const minutesToHoursAndMins = mins => {
+		const hours = Math.floor(mins / 60);
+		const remainMins = mins - hours * 60;
+
+		return `${hours}ч ${remainMins}м`
+	}
+
+	console.count()
 
 	return (
 		<div className="ticket-item box">
         <div className="ticket-item__price">
-        	{price}
+        	{price} P
         </div>
-        <div className="ticket-item__company-logo">
-        	{carrier}
+        <div className="ticket-item__carrier">
+        	<img src={`//pics.avs.io/99/36/${carrier}.png`} 
+        		alt="" 
+        		className="ticket-item__carrier-logo"
+        	/>
         </div>
         <div className="ticket-item__info-block">
           <div className="info-block__label">
           	{`${thither.origin} - ${thither.destination}`}
           </div>
           <div className="info-block__value">
-          	{thither.date}
+          	{getTimeInterval(thither.date, thither.duration)}
           </div>
         </div>
         <div className="ticket-item__info-block">
@@ -31,12 +49,12 @@ function TicketItem({data}) {
           	В пути
           </div>
           <div className="info-block__value">
-          	{minutesToHours(thither.duration)}ч
+          	{minutesToHoursAndMins(thither.duration)}
           </div>
         </div>
         <div className="ticket-item__info-block">
           <div className="info-block__label">
-          	{thither.stops.length}
+          	{getFormattedStringStops(thither.stops.length)}
           </div>
           <div className="info-block__value">
           	{thither.stops.join(", ")}
@@ -47,7 +65,7 @@ function TicketItem({data}) {
           	{`${back.origin} - ${back.destination}`}
           </div>
           <div className="info-block__value">
-          	{back.date}
+          	{getTimeInterval(back.date, back.duration)}
           </div>
         </div>
         <div className="ticket-item__info-block">
@@ -55,12 +73,12 @@ function TicketItem({data}) {
           	В пути
           </div>
           <div className="info-block__value">
-          	{minutesToHours(back.duration)}ч
+          	{minutesToHoursAndMins(back.duration)}
           </div>
         </div>
         <div className="ticket-item__info-block">
           <div className="info-block__label">
-          	{back.stops.length}
+          	{getFormattedStringStops(back.stops.length)}
           </div>
           <div className="info-block__value">
           	{back.stops.join(", ")}

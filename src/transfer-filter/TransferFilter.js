@@ -4,9 +4,9 @@ import './TransferFilter.css';
 function TransferFilter({onChange}) {
 
 	const handle = (e) => onChange({
-		name: e.target.name,
-		checked: e.target.checked
-	})
+    name: e.target.name,
+    checked: e.target.checked
+  })
 
 	return (
 		<div className="transfer-filter box">
@@ -14,55 +14,55 @@ function TransferFilter({onChange}) {
             Количество пересадок
           </div>
           <div className="transfer-filter__values">
-            <label className="transfer-filter__label checkbox-label">
 	          <input 
+              id="1"
 	          	type="checkbox" 
 	          	className="checkbox"
 	          	onChange={handle}
 	          	name="all"
 	          />
-	          <span></span>
+            <label htmlFor="1" className="transfer-filter__label checkbox-label">
               Все
             </label>
-            <label className="transfer-filter__label checkbox-label">
-              <input 
-              	type="checkbox" 
-              	className="checkbox"
-              	onChange={handle}
-              	name="0"
-              />
-              <span></span>
+            <input 
+              id="2"
+            	type="checkbox" 
+            	className="checkbox"
+            	onChange={handle}
+            	name="0"
+            />
+            <label htmlFor="2" className="transfer-filter__label checkbox-label">
               Без пересадок
             </label>
-            <label className="transfer-filter__label checkbox-label">
-              <input 
-              	type="checkbox" 
-              	className="checkbox"
-              	onChange={handle}
-              	name="1"
-              />
-               <span></span>
+            <input 
+              id="3"
+            	type="checkbox" 
+            	className="checkbox"
+            	onChange={handle}
+            	name="1"
+            />
+            <label htmlFor="3" className="transfer-filter__label checkbox-label">
               1 пересадка
             </label>
-            <label className="transfer-filter__label checkbox-label">
-              <input 
-              	type="checkbox" 
-              	className="checkbox"
-              	onChange={handle}
-              	name="2"
-              />
-               <span></span>
+            <input 
+              id="4"
+            	type="checkbox" 
+            	className="checkbox"
+            	onChange={handle}
+            	name="2"
+            />
+            <label htmlFor="4" className="transfer-filter__label checkbox-label">
               2 пересадки
             </label>
-            <label className="transfer-filter__label checkbox-label">
-              <input 
-              	type="checkbox" 
-              	className="checkbox"
-              	onChange={handle}
-              	name="3"
-              />
-               <span></span>
-              3 пересадки
+            <input 
+              id="5"
+            	type="checkbox" 
+            	className="checkbox"
+            	onChange={handle}
+            	name="3"
+            />
+            <label htmlFor="5" className="transfer-filter__label checkbox-label">
+             3 пересадки
             </label>
           </div>
         </div>

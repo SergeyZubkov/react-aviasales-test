@@ -8,8 +8,6 @@ export default {
     }
 
     return fetch(`${this.url}/tickets?searchId=${this.searchId}`)
-    .then(res => res.json())
-    .then(({tickets}) => tickets.slice(0, 20))
   },
   async getSearchId() {
     let searchId = fetch(`${this.url}/search`)

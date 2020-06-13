@@ -53,7 +53,8 @@
 
 }
 
-.checkbox + span {
+.checkbox-label:after {
+  content: '';
   display: none;
   position: absolute;
   top: 15px;
@@ -66,7 +67,11 @@
   border-top-color: transparent;
 }
 
-.checkbox:checked + span {
+.checkbox:checked + .checkbox-label:after {
   display: block;
+}
+
+.checkbox:checked + .checkbox-label:before {
+  border-color: #2196F3;
 }
 
