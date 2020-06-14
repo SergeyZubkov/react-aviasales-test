@@ -13,20 +13,23 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
 
+  let buffer = []
+
   useEffect(() => {
     async function subscribe() {
-      setIsLoading(true);
 
       let response = await dataService.getData();
-
+      console.log(response)
       if (response.ok) {
         // Get and show the message
         let data = await response.json();
+        console.log(data)
+        buffer = [...buffer, ...data.tickets];
+        if (isLoading) setIsLoading(false);
         if (data.stop) {
-          setIsLoading(false);
+          setTickets(buffer)
           return
         }
-        setTickets(data.tickets);
         // Call subscribe() again to get the next message
         await subscribe();
       } else {
@@ -34,7 +37,7 @@ function App() {
         setIsLoading(false);
         setIsError(true);
         // Reconnect in one second
-        await new Promise(resolve => setTimeout(resolve, 2000));
+        await new Promise(resolve => setTimeout(resolve, 1000));
         setIsError(false);
         await subscribe();
       }
@@ -81,7 +84,8 @@ function App() {
      <div className="ticket-list">
           {filterOut(tickets)
             .sort(by[sortingProperty])
-            .map((ticket, i) => <TicketItem key={i} data={ticket}/>)}
+            .slice(0, 5)
+            .map((ticket, i) => <TicketItem key={i} data={ticket} index={i}/>)}
       </div>
   )
 

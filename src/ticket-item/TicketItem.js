@@ -1,7 +1,8 @@
 import React from 'react';
 import "./TicketItem.css";
 
-function TicketItem({data}) {
+function TicketItem({data, index}) {
+
 	const {
 		price,
 		carrier,
@@ -27,6 +28,7 @@ function TicketItem({data}) {
 
 	return (
 		<div className="ticket-item box">
+		{index}
         <div className="ticket-item__price">
         	{price} P
         </div>

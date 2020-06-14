@@ -1,6 +1,6 @@
 .ticket-item {
   margin-top: 20px;
-  padding: 20px;
+  padding: 20px 20px 10px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -27,7 +27,7 @@
 }
 
 .ticket-item__info-block {
-  width: 141px;
+  width: 140px;
   margin-bottom: 10px;
 }
 
